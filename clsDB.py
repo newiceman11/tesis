@@ -2,9 +2,11 @@ import sqlite3
 from datetime import datetime
 import os.path
 
-class Input:
+class Input():
+
+
         os.chdir("/home/juampi/Escritorio/Python/Sistema/Programa")
-        def __init__(self,nombre,tipoDNI,numDni,fecNac,tel,email,clave):
+        def __init__(self,nombre,tipoDNI,numDni,fecNac,tel,email,clave,cmb):
             self.nombre = nombre
             self.tipoDNI= tipoDNI
             self.numDni= numDni
@@ -12,6 +14,7 @@ class Input:
             self.tel=tel
             self.email=email
             self.clave=clave
+            self.cmb=cmb
     #-----------------------------------------------------------------------    
         def setting(self):
             os.chdir("/home/juampi/Escritorio/Python/Sistema/Programa")
@@ -24,6 +27,7 @@ class Input:
                 TIPO_DOC VARCHAR(3),
                 NUMERO_DOC INTEGER UNIQUE,
                 FEC_NAC TIMESTAMP,
+                ID_PAIS INTEGER,
                 TEL INTEGER,
                 EMAIL VARCHAR(50),
                 CLAVE VARCHAR (25))
@@ -43,6 +47,7 @@ class Input:
                 "','" +self.tipoDNI+
                 "','" +self.numDni+
                 "','" +self.fecNac+
+                "','" +self.cmb+
                 "','" +self.tel+
                 "','" +self.email+
                 "','" +self.clave+
@@ -57,3 +62,5 @@ class Input:
                 if (sqliteConnection):
                     sqliteConnection.close()
                 print("The SQLite connection is closed")
+
+        

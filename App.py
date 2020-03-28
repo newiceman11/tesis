@@ -1,12 +1,15 @@
 import tkinter as tk
 from tkinter import Menu, ttk
 from clsDB import Input
-win = tk.Tk()
+from clsBox import Box 
+import os.path
+import sqlite3 as lite
 
+
+
+win = tk.Tk()           
 BarraMenu= Menu(win)
-
 win.config(menu=BarraMenu, width="300", height="300")
-
 bbddMenu=Menu(BarraMenu, tearoff=0)
 bbddMenu.add_command(label="Conectar")
 bbddMenu.add_separator()
@@ -32,12 +35,14 @@ BarraMenu.add_cascade(label="Ayuda", menu=ayudaMenu)
 
 win.title("tipoDNI Input")
 def submit():
-        if(nombre.get()!='' and tipoDNI.get()!=""):
-            sub_mit = Input(nombre.get(), tipoDNI.get(), numDni.get(),fecNac.get(),tel.get(),email.get(),clave.get())
+        
+        if(nombre.get()!='' and numDni.get()!=""):
+            sub_mit = Input(nombre.get(), numDni.get(), numDni.get(),fecNac.get(),tel.get(),email.get(),clave.get(),cmb.get())
             sub_mit.setting()
             sub_mit.submit()
         else:
             print("You need to enter a value!")
+
     #create label frame for ui
 earn= ttk.Labelframe(win, text = "Daily ")
 earn.grid(column=0, row=0, padx=4, pady=4)
@@ -47,10 +52,13 @@ nombre = tk.StringVar()
 nombreEntry = ttk.Entry(earn, width=13, textvariable=nombre)
 nombreEntry.grid(column=1, row=0,padx=10,pady=10)
 
-eLabel = ttk.Label(earn, text="tipo DNI:").grid(column=0, row=1)
-tipoDNI = tk.StringVar()
-tipoDNIEntry = ttk.Entry(earn, width=13, textvariable=tipoDNI)
-tipoDNIEntry.grid(column=1, row=1,padx=10,pady=10)
+#myDoc
+cmb= tk.StringVar()
+dLabel = ttk.Label(earn, text="Tipo DNI:").grid(column=0, row=1)
+combo = ttk.Combobox(earn, width=11, height=20, textvariable=cmb)
+combo.grid(column=1, row=1, padx=10, pady=10)
+b= Box() 
+combo['values'] =b.combo_DNI()
 
 eLabel = ttk.Label(earn, text="DNI:").grid(column=0, row=2)
 numDni = tk.StringVar()
@@ -61,6 +69,16 @@ eLabel = ttk.Label(earn, text="Fecha Nac:").grid(column=0, row=3)
 fecNac = tk.StringVar()
 fecNacEntry = ttk.Entry(earn, width=13, textvariable=fecNac)
 fecNacEntry.grid(column=1, row=3,padx=10,pady=10)
+
+#micountry
+cmb= tk.StringVar()
+dLabel = ttk.Label(earn, text="Pais:").grid(column=2, row=0)
+combo = ttk.Combobox(earn, width=11, height=20, textvariable=cmb)
+combo.grid(column=3, row=0, padx=10, pady=10)
+b= Box() 
+combo['values'] =b.combo_values_input()
+    
+
 
 eLabel = ttk.Label(earn, text="Email:").grid(column=2, row=1)
 tel = tk.StringVar()
@@ -79,8 +97,18 @@ claveEntry.grid(column=3, row=3,padx=10,pady=10)
 
 
 
-    # create the action button
-action = ttk.Button(earn, text="submit", command=submit)
-action.grid(column=0, row=4)
+# create the action button
+action = ttk.Button(earn, text="Agregar", command=submit)
+action.grid(column=0, row=4,padx=10,pady=10)
+
+read = ttk.Button(earn, text="Ver", command=submit)
+read.grid(column=1, row=4,padx=10,pady=10)
+
+
+action = ttk.Button(earn, text="Actualizar", command=submit)
+action.grid(column=2, row=4)
+
+action = ttk.Button(earn, text="eliminar", command=submit)
+action.grid(column=3, row=4)
 win.resizable(0,0)
 win.mainloop()
