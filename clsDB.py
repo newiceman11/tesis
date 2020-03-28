@@ -3,15 +3,18 @@ from datetime import datetime
 import os.path
 
 class Input:
-        os.chdir("/home/juampi/Escritorio/Python/Sistema")
-        def __init__(self,nombre,tipoDNI,numDni,fecNac):
+        os.chdir("/home/juampi/Escritorio/Python/Sistema/Programa")
+        def __init__(self,nombre,tipoDNI,numDni,fecNac,tel,email,clave):
             self.nombre = nombre
             self.tipoDNI= tipoDNI
             self.numDni= numDni
             self.fecNac=fecNac
+            self.tel=tel
+            self.email=email
+            self.clave=clave
     #-----------------------------------------------------------------------    
         def setting(self):
-            os.chdir("/home/juampi/Escritorio/Python/Sistema")
+            os.chdir("/home/juampi/Escritorio/Python/Sistema/Programa")
             conn = sqlite3.connect('daily.db')
             print("Opened database successfully")
             try:
@@ -20,7 +23,11 @@ class Input:
                 APELNOM VARCHAR(50),
                 TIPO_DOC VARCHAR(3),
                 NUMERO_DOC INTEGER UNIQUE,
-                FEC_NAC TIMESTAMP)''')
+                FEC_NAC TIMESTAMP,
+                TEL INTEGER,
+                EMAIL VARCHAR(50),
+                CLAVE VARCHAR (25))
+                ''')
             except:
                 pass
             print("Table created successfully")
@@ -36,6 +43,9 @@ class Input:
                 "','" +self.tipoDNI+
                 "','" +self.numDni+
                 "','" +self.fecNac+
+                "','" +self.tel+
+                "','" +self.email+
+                "','" +self.clave+
                 "')")
 
                 sqliteConnection.commit()
@@ -46,4 +56,4 @@ class Input:
             finally:
                 if (sqliteConnection):
                     sqliteConnection.close()
-                    print("The SQLite connection is closed")
+                print("The SQLite connection is closed")

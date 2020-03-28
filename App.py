@@ -5,13 +5,13 @@ win = tk.Tk()
 win.title("tipoDNI Input")
 def submit():
         if(nombre.get()!='' and tipoDNI.get()!=""):
-            sub_mit = Input(nombre.get(), tipoDNI.get(), numDni.get(),fecNac.get(),tel.get())
+            sub_mit = Input(nombre.get(), tipoDNI.get(), numDni.get(),fecNac.get(),tel.get(),email.get(),clave.get())
             sub_mit.setting()
             sub_mit.submit()
         else:
             print("You need to enter a value!")
     #create label frame for ui
-earn= ttk.Labelframe(win, text = "Daily tipoDNI Input")
+earn= ttk.Labelframe(win, text = "Daily ")
 earn.grid(column=0, row=0, padx=4, pady=4)
     # create label for nombre
 dLabel = ttk.Label(earn, text="Apellido nombre:").grid(column=0, row=0)
