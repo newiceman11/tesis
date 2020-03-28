@@ -34,6 +34,20 @@ class Input():
                 ''')
             except:
                 pass
+            try:
+                conn.execute('''CREATE TABLE PASAJEROS(
+                ID_PASAJERO INTEGER PRIMARY KEY AUTOINCREMENT, 
+                APELNOM VARCHAR(50),
+                TIPO_DOC VARCHAR(3),
+                NUMERO_DOC INTEGER UNIQUE,
+                FEC_NAC TIMESTAMP,
+                ID_PAIS INTEGER,
+                TEL INTEGER,
+                EMAIL VARCHAR(50),
+                CLAVE VARCHAR (25))
+                ''')
+            except:
+                pass
             print("Table created successfully")
             conn.close()
 
@@ -62,5 +76,5 @@ class Input():
                 if (sqliteConnection):
                     sqliteConnection.close()
                 print("The SQLite connection is closed")
-
+            sqliteConnection.close
         
