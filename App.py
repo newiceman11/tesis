@@ -37,7 +37,7 @@ win.title("tipoDNI Input")
 def submit():
         
         if(nombre.get()!='' and numDni.get()!=""):
-            sub_mit = Input(nombre.get(), numDni.get(), numDni.get(),fecNac.get(),tel.get(),email.get(),clave.get(),cmb.get())
+            sub_mit = Input(nombre.get(), cmbDNI.get(), numDni.get(),fecNac.get(),tel.get(),email.get(),clave.get(),cmbPais.get())
             sub_mit.setting()
             sub_mit.submit()
         else:
@@ -53,9 +53,9 @@ nombreEntry = ttk.Entry(earn, width=13, textvariable=nombre)
 nombreEntry.grid(column=1, row=0,padx=10,pady=10)
 
 #myDoc
-cmb= tk.StringVar()
+cmbDNI= tk.StringVar()
 dLabel = ttk.Label(earn, text="Tipo DNI:").grid(column=0, row=1)
-combo = ttk.Combobox(earn, width=11, height=20, textvariable=cmb)
+combo = ttk.Combobox(earn, width=11, height=20, textvariable=cmbDNI)
 combo.grid(column=1, row=1, padx=10, pady=10)
 b= Box() 
 combo['values'] =b.combo_DNI()
@@ -71,9 +71,9 @@ fecNacEntry = ttk.Entry(earn, width=13, textvariable=fecNac)
 fecNacEntry.grid(column=1, row=3,padx=10,pady=10)
 
 #micountry
-cmb= tk.StringVar()
+cmbPais= tk.StringVar()
 dLabel = ttk.Label(earn, text="Pais:").grid(column=2, row=0)
-combo = ttk.Combobox(earn, width=11, height=20, textvariable=cmb)
+combo = ttk.Combobox(earn, width=11, height=20, textvariable=cmbPais)
 combo.grid(column=3, row=0, padx=10, pady=10)
 b= Box() 
 combo['values'] =b.combo_values_input()
@@ -107,5 +107,13 @@ action.grid(column=2, row=4)
 
 action = ttk.Button(earn, text="eliminar", command=submit)
 action.grid(column=3, row=4)
+
+'''def clearEntry():
+        nombre.set("") 
+        numDni.set("")
+        tel.set("")
+        email.set("")
+        clave.get("")'''
+        
 win.resizable(0,0)
 win.mainloop()

@@ -7,10 +7,9 @@ from tkinter.ttk import *
 def salir():
     out= messagebox.askquestion("Salir", "¿Desea salir de la aplacación?")
     if out=="yes":
-        Root.destroy()
+        RootPais.destroy()
 
-def clearEntry():
-        miNombre.set("")      
+
 
 
 def create():
@@ -20,13 +19,11 @@ def create():
         myCursor.execute("INSERT INTO PAISES VALUES (NULL,'"+miNombre.get()+"')")
         messagebox.showinfo("BBDD","Se ha registrado correctamente")
         myConn.commit()
-        clearEntry()
 
+RootPais= Tk()
+BarraMenu= Menu(RootPais)
 
-Root= Tk()
-BarraMenu= Menu(Root)
-
-Root.config(menu=BarraMenu, width="300", height="300")
+RootPais.config(menu=BarraMenu, width="300", height="300")
 
 bbddMenu=Menu(BarraMenu, tearoff=0)
 bbddMenu.add_command(label="Conectar")
@@ -34,7 +31,7 @@ bbddMenu.add_separator()
 bbddMenu.add_command(label="Salir", command=salir)
 
 borrarMenu=Menu(BarraMenu, tearoff=0)
-borrarMenu.add_command(label="Borrar campos", command= clearEntry)
+borrarMenu.add_command(label="Borrar campos")
 
 crudMenu=Menu(BarraMenu, tearoff=0)
 crudMenu.add_command(label="Crear")
@@ -54,7 +51,7 @@ BarraMenu.add_cascade(label="Ayuda", menu=ayudaMenu)
 
 #----------------------COMIENZO DE CAMPOS-------------------
 miNombre= StringVar()
-myFrame= Frame(Root)
+myFrame= Frame(RootPais)
 myFrame.pack()
 txtName=Entry(myFrame, textvariable=miNombre)
 txtName.grid(row=0, column=1, padx=10, pady=10)
@@ -62,8 +59,8 @@ txtName.grid(row=0, column=1, padx=10, pady=10)
 nameLabel= Label(myFrame, text="Nombre País: ")
 nameLabel.grid(row=0, column=0, padx=10, pady=10)
 #-----------------------buttons---------------------------
-myFrame2= Frame(Root)
+myFrame2= Frame(RootPais)
 myFrame2.pack()
 createButton= Button(myFrame2, text="Crear", command=create)
 createButton.grid(row=0, column=0, padx=10, pady=10)
-Root.mainloop()
+RootPais.mainloop()
