@@ -9,9 +9,6 @@ def salir():
     if out=="yes":
         RootPais.destroy()
 
-
-
-
 def create():
 
         myConn= sqlite3.Connection("daily.db")

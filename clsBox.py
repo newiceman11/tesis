@@ -17,7 +17,6 @@ class Box():
                 for row in cur.fetchall():
                         data.append(row[0])
                 return data
-
                 cur.close()
                 conn.close()
             except:

@@ -7,7 +7,7 @@ import sqlite3 as lite
 
 
 
-win = tk.Tk()           
+win=tk.Tk()           
 BarraMenu= Menu(win)
 win.config(menu=BarraMenu, width="300", height="300")
 bbddMenu=Menu(BarraMenu, tearoff=0)
@@ -19,10 +19,10 @@ borrarMenu=Menu(BarraMenu, tearoff=0)
 borrarMenu.add_command(label="Borrar campos")
 
 crudMenu=Menu(BarraMenu, tearoff=0)
-crudMenu.add_command(label="Crear")
-crudMenu.add_command(label="Leer")
-crudMenu.add_command(label="Actualizar")
-crudMenu.add_command(label="Borrar")
+crudMenu.add_command(label="pasajero",)
+crudMenu.add_command(label="pais")
+crudMenu.add_command(label="DNI")
+#crudMenu.add_command(label="Borrar")
 
 ayudaMenu=Menu(BarraMenu, tearoff=0)
 ayudaMenu.add_command(label="Licencia")
@@ -30,10 +30,10 @@ ayudaMenu.add_command(label="Acerca de")
 
 BarraMenu.add_cascade(label="BBDD", menu=bbddMenu)
 BarraMenu.add_cascade(label="Borrar", menu=borrarMenu)
-BarraMenu.add_cascade(label="Crud", menu=crudMenu)
+BarraMenu.add_cascade(label="Seeders", menu=crudMenu)
 BarraMenu.add_cascade(label="Ayuda", menu=ayudaMenu)
 
-win.title("tipoDNI Input")
+win.title("System 1.0")
 def submit():
         
         if(nombre.get()!='' and numDni.get()!=""):

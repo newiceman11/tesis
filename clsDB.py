@@ -26,7 +26,7 @@ class Input():
                 ID_PASAJERO INTEGER PRIMARY KEY AUTOINCREMENT, 
                 APELNOM VARCHAR(50),
                 TIPO_DOC VARCHAR(3),
-                NUMERO_DOC INTEGER UNIQUE,
+                ID_DOC INTEGER UNIQUE,
                 FEC_NAC TIMESTAMP,
                 ID_PAIS INTEGER,
                 TEL INTEGER,
@@ -37,8 +37,14 @@ class Input():
                 pass
             try:
                 conn.execute('''CREATE TABLE PAISES(
-                ID_PASAJERO INTEGER PRIMARY KEY AUTOINCREMENT, 
+                ID_PAIS INTEGER PRIMARY KEY AUTOINCREMENT, 
                 NOMBRE CHAR(50))''')
+            except:
+                pass
+            try:
+                conn.execute('''CREATE TABLE TIPOS_DNI(
+                ID_DOC INTEGER PRIMARY KEY AUTOINCREMENT, 
+                DESCRIPCION VARCHAR(50))''')
             except:
                 pass
             print("Table created successfully")
