@@ -55,15 +55,15 @@ from tkinter.messagebox import showerror, showinfo
 import os.path
 
 
-ventana = Tk()
-ventana.title ("------- Login Python Diario -------")
-ventana.geometry ("350x150+500+250")
-Label(ventana, text = "Usuario:").pack()
-caja1 = Entry(ventana)
+Root = Tk()
+Root.title ("------- Login Python Diario -------")
+Root.geometry ("350x150+500+250")
+Label(Root, text = "Usuario:").pack()
+caja1 = Entry(Root)
 caja1.pack()
  
-Label(ventana, text = "Contraseña:").pack()
-caja2 = Entry(ventana, show = "*")
+Label(Root, text = "Contraseña:").pack()
+caja2 = Entry(Root, show = "*")
 caja2.pack()
  
 def login():
@@ -87,4 +87,4 @@ def login():
 Button (text = "Login", command = login).pack()
  
  
-ventana.mainloop()
+Root.mainloop()
